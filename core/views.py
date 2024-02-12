@@ -34,7 +34,7 @@ def send_link(request):
     localhost = 'localhost:8000' 
     if request.method == "POST":
         data = request.data
-        print(data)
+        
         try:
             obj = Person.create(
                 first_name=data['first_name'],
@@ -44,8 +44,9 @@ def send_link(request):
                 speak_from_heart=data['speak_from_heart']
             )
             image_url = request.build_absolute_uri(obj.image.url)
+            #id_url=request.build_absolute_uri(obj.id)
             content={
-                'link': f"{localhost}/message/{obj.id}",
+                'link': f"https://askcrushout.onrender.com/api/message/{obj.id}",
                 'image':image_url
             }
             return JsonResponse(data=content,status=status.HTTP_201_CREATED)
