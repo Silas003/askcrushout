@@ -51,7 +51,7 @@ def send_link(request):
             }
             return JsonResponse(data=content,status=status.HTTP_201_CREATED)
         except (IntegrityError, ValidationError) as e:
-            return JsonResponse({'error': str(e)}, status=400)
+            return JsonResponse({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 class HandleMail(threading.Thread):
     def __init__(self,subject,body,receipient):
