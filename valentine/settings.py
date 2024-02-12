@@ -1,9 +1,15 @@
 
 from pathlib import Path
 import os
+import environ
+import dj_database_url
+
+env=environ.Env(
+    
+)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -75,17 +81,19 @@ WSGI_APPLICATION = 'valentine.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+#DATABASES = {
+#    'default': {
+ #       'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
 
 
 DATABASES={
-     'default':"postgres://rentaldb_ofuc_user:vynMZu4gSrpDILLpSfU7QrjUjRH9Ev7q@dpg-cmpgp9ug1b2c73fbtct0-a.oregon-postgres.render.com/rentaldb_ofuc",
+     'default':dj_database_url.parse(env('DATABASE_URL'))
  }
+
+
 
 
 # Password validation
