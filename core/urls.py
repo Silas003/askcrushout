@@ -9,6 +9,6 @@ router.register('res',ResViewset,basename='res')
 
 urlpatterns = [
     path('send-link/',send_link,name='send=link'),
-    path('message/<int:id>',send_message,name='message')
+    path('asking/<int:id>',send_message,name='asking')
 ]
 urlpatterns+=router.urls

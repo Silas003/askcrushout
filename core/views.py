@@ -46,7 +46,7 @@ def send_link(request):
             image_url = request.build_absolute_uri(obj.image.url)
             #id_url=request.build_absolute_uri(obj.id)
             content={
-                'link': f"https://askcrushout.onrender.com/api/message/{obj.id}",
+                'link': f"https://askcrushout.netlify.app/asking/{obj.id}",
                 'image':image_url
             }
             return JsonResponse(data=content,status=status.HTTP_201_CREATED)
@@ -71,13 +71,12 @@ class HandleMail(threading.Thread):
 @api_view(['POST','GET'])
 def send_message(request:Request,id:int):
     user=Person.objects.filter(id=id).first()
-    #user.response=request.data['message']
-    #user.save()
     serializer=PersonSerializer(user,many=False)
+    text=f'Dear,{user.first_name},it\\\'s with with great heart that your crush,{user.admirer} has accepted your proposal but thread carefully'
     if request.data:
         HandleMail(
             subject=request.data['message'],
-            receipient=['silaskumi4@gmail.com','kumideveloper@gmail.com'],
+            receipient=['kumideveloper@gmail.com',user.email],
             body=request.data['message']
             ).start()
         return Response({
