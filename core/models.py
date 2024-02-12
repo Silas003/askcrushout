@@ -43,6 +43,7 @@ class Person(models.Model):
     email = models.EmailField(unique=True)
     response = models.CharField(max_length=50)
     image = models.ImageField(upload_to='images/')
+    speak_from_heart=models.TextField()
 
     @classmethod
     def generate_id(cls):
