@@ -42,7 +42,7 @@ class Person(models.Model):
     admirer = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     response = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='')
     speak_from_heart=models.TextField()
 
     @classmethod
