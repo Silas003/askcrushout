@@ -45,7 +45,8 @@ def send_link(request):
             image_url = request.build_absolute_uri(obj.image.url)
             #id_url=request.build_absolute_uri(obj.id)
             content={
-                'link': f"https://askcrushout.netlify.app/asking/{obj.id}",
+                'id':obj.id,
+                'link': f"https://askcrushout.netlify.app/",                
                 'image':image_url
             }
             return JsonResponse(data=content,status=status.HTTP_201_CREATED)
