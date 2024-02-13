@@ -78,6 +78,7 @@ def send_message(request:Request,id:int):
     yes_text=f"Congratulations to you.Your crush,{user.admirer} said to to a lifetime of love and happiness! Your decision to accept the proposal fills our hearts with joy and excitement. May your journey together be filled with endless laughter, cherished moments, and unwavering love. Here's to a future brimming with love, laughter, and countless beautiful memories. Wishing you both a lifetime of happiness and love as you embark on this wonderful journey together. Congratulations once again!"    
     no_text=f"While the decision may not have been easy, know that you have our full support and understanding. Your happiness and well-being are paramount, and we respect your choice wholeheartedly. Remember that life is a journey filled with twists and turns, and this decision is just one step along the way. Take your time, trust your instincts, and know that brighter days are ahead. You're surrounded by love and support as you navigate this chapter of your life. We're here for you every step of the way. Sending you strength, courage, and peace during this time.Your crush,{user.admirer} said a BIG NO!!!"
     message=request.data['message']
+    
     if request.data and message=='Yes':
         HandleMail(
             subject=if_true_subject,
@@ -85,7 +86,7 @@ def send_message(request:Request,id:int):
             body=yes_text
             ).start()
         return Response({
-            'message':'mail sent'})
+            'message':'mail sent','message':message})
         
     elif request.data and message=='No':
         HandleMail(
@@ -94,7 +95,7 @@ def send_message(request:Request,id:int):
             body=no_text
             ).start()
         return Response({
-            'message':'mail sent'})
+            'message':'mail sent','message':message})
     
     return Response({
             'user':serializer.data})
