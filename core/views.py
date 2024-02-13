@@ -8,7 +8,7 @@ from django.core.mail import EmailMessage
 from django.http import JsonResponse
 from django.db import IntegrityError
 from django.core.exceptions import ValidationError
-from .models import Person,Anon,Response
+from .models import Person,Anon,Anon_Response
 from rest_framework import status
 from drf_yasg.utils import swagger_auto_schema
 
@@ -23,7 +23,7 @@ class AnonViewset(viewsets.ModelViewSet):
 
 class ResViewset(viewsets.ModelViewSet):
     serializer_class=ResSerializer
-    queryset=Response.objects.all()
+    queryset=Anon_Response.objects.all()
 
 
 
@@ -31,7 +31,6 @@ class ResViewset(viewsets.ModelViewSet):
 @swagger_auto_schema()
 @api_view(['POST'])
 def send_link(request):
-    localhost = 'localhost:8000' 
     if request.method == "POST":
         data = request.data
         

@@ -61,7 +61,7 @@ class Anon(models.Model):
     def __str__(self) -> str:
         return self.username
     
-class Response(models.Model):
+class Anon_Response(models.Model):
     user=models.ForeignKey(Anon,on_delete=models.CASCADE,related_name='responses')
     response=models.TextField()
     

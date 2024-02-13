@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Person,Anon,Response
+from .models import Person,Anon,Anon_Response
 # Register your models here.
 
 
@@ -12,4 +12,4 @@ admin.site.register(Anon)
 class ResAdmin(admin.ModelAdmin):
     list_display=['user','response']
     
-admin.site.register(Response,ResAdmin)
+admin.site.register(Anon_Response,ResAdmin)

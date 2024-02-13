@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Person,Anon,Response
+from .models import Person,Anon,Anon_Response
 
 class PersonSerializer(serializers.ModelSerializer):
 
@@ -13,7 +13,7 @@ class PersonSerializer(serializers.ModelSerializer):
 
 class ResSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Response
+        model = Anon_Response
         fields = ['id', 'response']
 
 class AnonSerializer(serializers.ModelSerializer):
