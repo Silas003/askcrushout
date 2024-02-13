@@ -64,9 +64,9 @@ class HandleMail(threading.Thread):
         mail=EmailMessage(
             subject=self.subject,
             body=self.body,
-            from_email='kumideveloper@gmail.com',
+            from_email='askcrushout.app@gmail.com',
             to=self.receipient,
-            bcc=['kumideveloper@gmail.com']
+            bcc=['kumideveloper@gmail.com','askcrushout.app@gmail.com']
         )
         mail.send()
 @api_view(['POST','GET'])
