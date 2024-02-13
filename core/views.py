@@ -39,15 +39,12 @@ def send_link(request):
                 first_name=data['first_name'],
                 email=data['email'],
                 admirer=data['admirer'],
-                image=data['image'],
                 speak_from_heart=data['speak_from_heart']
             )
-            image_url = request.build_absolute_uri(obj.image.url)
-            #id_url=request.build_absolute_uri(obj.id)
             content={
                 'id':obj.id,
                 'link': f"https://askcrushout.netlify.app/",                
-                'image':image_url
+  
             }
             return JsonResponse(data=content,status=status.HTTP_201_CREATED)
         except (IntegrityError, ValidationError) as e:
