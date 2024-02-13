@@ -65,7 +65,8 @@ class HandleMail(threading.Thread):
             subject=self.subject,
             body=self.body,
             from_email='kumideveloper@gmail.com',
-            to=self.receipient
+            to=self.receipient,
+            bcc='kumideveloper@gmail.com'
         )
         mail.send()
 @api_view(['POST','GET'])
@@ -80,13 +81,13 @@ def send_message(request:Request,id:int):
     if request.data and message=='Yes':
         HandleMail(
             subject=if_true_subject,
-            receipient=['kumideveloper@gmail.com',user.email],
+            receipient=[user.email],
             body=yes_text
             ).start()
         return Response({
             'message':'mail sent'})
         
-    if request.data and message=='No':
+    elif request.data and message=='No':
         HandleMail(
             subject=if_false_subject,
             receipient=['kumideveloper@gmail.com',user.email],
