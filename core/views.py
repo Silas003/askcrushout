@@ -42,8 +42,8 @@ def send_link(request):
                 speak_from_heart=data['speak_from_heart']
             )
             content={
-                'id':obj.id,
-                'link': f"https://askcrushout.netlify.app/",                
+
+                'link': f"https://askcrushout.netlify.app/asking/{obj.id}",                
   
             }
             return JsonResponse(data=content,status=status.HTTP_201_CREATED)
