@@ -40,7 +40,7 @@ class Person(models.Model):
     )
     first_name = models.CharField(max_length=100)
     admirer = models.CharField(max_length=50)
-    email = models.EmailField(unique=True)
+    email = models.EmailField()
     response = models.CharField(max_length=50)
     speak_from_heart=models.TextField()
 
